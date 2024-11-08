@@ -1,0 +1,303 @@
+
+body {
+  font-family: DM Sans;
+  background: radial-gradient(circle at 0% 0.5%, rgb(241, 241, 242) 0.1%, rgb(224, 226, 228) 100.2%);
+}
+
+/* Badges */
+
+.badge-cont {
+  margin-left: 2em;
+}
+
+.badges-title {
+  margin-top: 4rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: .5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.badges-div,.squares-div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.square {
+  display: inline-block;
+  padding: .5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+}
+
+.badge-success {
+  background-color: #297c58;
+}
+
+.badge-warning {
+  background-color: #ffc107;
+}
+
+.badge-danger {
+  background-color: #dc3545;
+}
+
+.badge-info {
+  background-color: #17a2b8;
+}
+
+.badge-secondary {
+  background-color: gray;
+}
+
+.badge-blue {
+  background-color: blue;
+}
+
+.badge-indigo {
+  background-color: indigo;
+}
+
+.badge-purple {
+  background-color: purple;
+}
+.badge-pink {
+  background-color: pink;
+}
+
+.square-success {
+  background-color: #297c58;
+}
+
+.square-warning {
+  background-color: #ffc107;
+}
+
+.square-danger {
+  background-color: #dc3545;
+}
+
+.square-info {
+  background-color: #17a2b8;
+}
+
+.square-secondary {
+  background-color: gray;
+}
+
+.square-blue {
+  background-color: blue;
+}
+
+.square-indigo {
+  background-color: indigo;
+}
+
+.square-purple {
+  background-color: purple; 
+}
+
+.square-pink {
+  background-color: pink;
+}
+
+
+/* Banners */
+
+.banners-title {
+  margin-top: 4rem;
+  margin-left: 2rem;
+}
+
+.banner {
+  display: flex;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  width: 65%;
+  height: 4rem;
+  padding-bottom: 1rem;
+  border-radius: .5rem;
+}
+
+.banner-title {
+  font-size: 1rem;
+  margin-left: .5rem;
+}
+
+.banner-subtitle {
+  font-size: 1rem;
+  margin-left: 2rem;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.cloud-icon {
+  font-size: 3rem;
+  background-color: black;
+  padding: 1rem 1rem;
+  border-radius: .5rem;
+}
+
+.card-icon {
+  margin-left: 10rem;
+  margin-bottom: -3rem;
+  color: maroon;
+}
+
+
+/* Card */
+
+.card-main {
+  margin-top: 4rem;
+  margin-left: 3rem;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 10rem;
+  width: 25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  text-align: center;
+  padding-top: 4rem;
+  background-color: maroon;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.card-title {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.card-content {
+  font-size: 1em;
+  color: #555;
+}
+
+
+/* Testimonial */
+
+.testimonial-title {
+  margin-top: 4rem;
+  margin-left: 2rem;
+}
+
+.testimonial {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  margin-left: 2rem;
+  height: 15rem;
+  width: 25rem;
+  text-align: center;
+  background-color: lightgray;
+}
+
+.testimonial-image {
+  border-radius: 50%;
+  width: 7rem;
+  height: 7rem;
+  object-fit: cover;
+}
+
+.testimonial-message {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonial-name {
+  font-weight: bold;
+}
+
+.quote-icon {
+  font-size: 1rem; 
+  margin-right: 18rem;
+  margin-bottom: -1rem;
+}
+
+
+/* ToolTips */
+
+.tooltips-title {
+  margin-top: 4rem;
+  margin-left: 2rem;
+}
+
+.tool-tip {
+  margin-left: -4rem;
+  position: absolute;
+  margin-top: -6rem;
+  width: 23rem;
+  padding: 5px;
+  border-radius: 4px;
+  opacity: 0.9;
+  font-size: 1rem;
+  --tooltip-bg-color: black;
+  background-color: var(--tooltip-bg-color);
+}
+
+.tool-tip::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 15%;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--tooltip-bg-color); 
+}
+
+.tool-tip-header {
+  display: flex;
+  align-items: center;
+}
+
+.tool-tip-header h3 {
+  margin-left: .5rem;
+  margin-top: 1rem; 
+  color: white;
+}
+
+.x {
+  margin-left: 50%;
+  margin-top: -.5rem;
+  color: white;
+}
+
+.inbox {
+  font-size: 1.2rem;
+  margin-left: .6rem;
+  color: white;
+}
+
+.tooltip-desc {
+  margin-top: -.5rem;
+  margin-left: 2.3rem;
+  margin-bottom: 1.2rem;
+  color: white;
+}
+
+
+
+
+
+
+
+
