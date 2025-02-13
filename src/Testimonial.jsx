@@ -1,29 +1,33 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import './app.css'; 
-import main from './image.jpg';
+import './styles/Testimonial.css'; 
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Testimonial = ({ name, message }) => {
+const Testimonial = ({ name, message, image, rating }) => {
   return (
     <div className="testimonial">
-      <img src={main} alt={`${name}'s profile`} className="testimonial-image" />
+      <div className="testimonial-glass-effect"></div>
+      <div className="testimonial-image-wrapper">
+        <img src={image || "/api/placeholder/80/80"} alt={`${name}`} className="testimonial-image" />
+      </div>
       <div className="testimonial-content">
         <FontAwesomeIcon icon={faQuoteLeft} className="quote-icon" />
         <blockquote className="testimonial-message">
           {message}
         </blockquote>
-        <cite className="testimonial-name">— {name}</cite>
+        <div className="testimonial-footer">
+          <cite className="testimonial-name">— {name}</cite>
+          {rating && (
+            <div className="testimonial-rating">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className={`star ${i < rating ? 'filled' : ''}`}>★</span>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
-};
-
-Testimonial.propTypes = {
-  name: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
-  image: PropTypes.string
 };
 
 export default Testimonial;

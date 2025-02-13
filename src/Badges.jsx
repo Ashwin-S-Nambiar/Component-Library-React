@@ -1,14 +1,12 @@
 import React from 'react';
-import './App';
+import './styles/Badges.css';
 
-const Badge = ({label, type }) => {
-    return (
-       <>
-        <span className={`badge badge-${type}`}>
-         {label}
-        </span>
-       </>
-    )
-}
+const Badge = ({ label, type = 'default', size = 'medium', isGlowing = false }) => {
+  return (
+    <span className={`badge badge-${type} badge-${size} ${isGlowing ? 'badge-glow' : ''}`}>
+      {label}
+    </span>
+  );
+};
 
 export default Badge;

@@ -1,21 +1,24 @@
-/* Base Styles and Variables */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 :root {
-  --background: #000000;
+  --background: #111111;
   --foreground: #ffffff;
   --accent: #0070f3;
   --border-radius: 8px;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  
-  /* Colors */
-  --success: rgba(34, 197, 94, 0.2);
-  --warning: rgba(245, 158, 11, 0.2);
-  --danger: rgba(239, 68, 68, 0.2);
-  --info: rgba(59, 130, 246, 0.2);
-  --secondary: rgba(156, 163, 175, 0.2);
-  
-  /* Transitions */
-  --transition-base: all 0.3s ease;
-  --transition-fast: all 0.15s ease;
+  --max-width: 1200px;
+  --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --card-background: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --header-gradient: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.7));
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  --gradient-success: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  --gradient-warning: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+  --gradient-danger: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
 }
 
 body {
@@ -28,316 +31,98 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Grid Background */
+.app-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem;
+  transform: translateY(20px);
+  transition: var(--transition-base);
+}
+
+.app-container.visible {
+  transform: translateY(0);
+}
+
 .grid-background {
-  background-image: linear-gradient(to right, rgba(29, 29, 29, 0.1) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(29, 29, 29, 0.1) 1px, transparent 1px);
+  background-image: linear-gradient(to right, #1d1d1d 1px, transparent 1px),
+                    linear-gradient(to bottom, #1d1d1d 1px, transparent 1px);
   background-size: 20px 20px;
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -1;
+  opacity: 0.5;
 }
 
-.section-title {
+.page-header {
   text-align: center;
+  margin: 4rem 0 6rem;
+  animation: slideIn 1s ease-out forwards;
 }
 
-
-/* Badge Component */
-.badges-grid, .squares-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5em;
-  margin: 1rem 0;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border-radius: 9999px;
-  transition: var(--transition-base);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.badge-secondary { background: var(--secondary); color: rgba(255, 255, 255, 0.9); }
-.badge-danger { background: var(--danger); color: rgba(255, 255, 255, 0.9); }
-.badge-warning { background: var(--warning); color: rgba(255, 255, 255, 0.9); }
-.badge-success { background: var(--success); color: rgba(255, 255, 255, 0.9); }
-.badge-info { background: var(--info); color: rgba(255, 255, 255, 0.9); }
-.badge-blue { background: rgba(59, 130, 246, 0.2); color: rgba(255, 255, 255, 0.9); }
-.badge-purple { background: rgba(168, 85, 247, 0.2); color: rgba(255, 255, 255, 0.9); }
-.badge-pink { background: rgba(236, 72, 153, 0.2); color: rgba(255, 255, 255, 0.9); }
-.badge-indigo { background: rgba(99, 102, 241, 0.2); color: rgba(255, 255, 255, 0.9); }
-
-/* Square Component */
-.square {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border-radius: var(--border-radius);
-  transition: var(--transition-base);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.square:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.square-secondary { background: var(--secondary); }
-.square-danger { background: var(--danger); }
-.square-warning { background: var(--warning); }
-.square-success { background: var(--success); }
-.square-info { background: var(--info); }
-.square-blue { background: rgba(59, 130, 246, 0.2); }
-.square-purple { background: rgba(168, 85, 247, 0.2); }
-.square-pink { background: rgba(236, 72, 153, 0.2); }
-.square-indigo { background: rgba(99, 102, 241, 0.2); }
-
-/* Banner Component */
-.banner {
-  position: relative;
-  padding: 1.25rem;
-  margin: 1rem auto;
-  max-width: 1200px;
-  border-radius: var(--border-radius);
-  transition: var(--transition-base);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-}
-
-.banner:hover {
-  transform: translateX(10px);
-}
-
-.banner-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.banner-title {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1rem;
-  font-weight: 600;
+.gradient-title {
+  font-size: 4rem;
+  font-weight: 800;
   margin: 0;
-}
-
-.banner-subtitle {
-  margin: 0;
-  opacity: 0.8;
-}
-
-.icon {
-  font-size: 1.25rem;
-}
-
-/* Card Component */
-.card {
-  margin: 1rem auto;
-  max-width: 1200px;
-  position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  transition: var(--transition-base);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-}
-
-.card-icon {
-  position: relative;
-  top: 0px;
-  right: 0px;
-  z-index: 1;
-}
-
-.cloud-icon {
-  font-size: 2.5rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: var(--transition-base);
-}
-
-.card:hover .cloud-icon {
-  transform: scale(1.1) rotate(-5deg);
-}
-
-.card-title {
-  font-size: 1.5rem;
-  margin: 0 0 1rem 0;
-  background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.7));
+  background: var(--header-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.card-content {
+.header-subtitle {
+  font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-  margin: 0;
+  margin-top: 1rem;
 }
 
-/* Testimonial Component */
-.testimonial {
-  position: relative;
-  max-width: 1200px;
-  margin: 1rem auto;
-  background: rgba(255, 255, 255, 0.03);
+.section {
+  margin: 6rem 0;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  background: var(--header-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-divider {
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  margin-top: 1rem;
+  border-radius: 2px;
+}
+
+.component-container {
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
   padding: 2rem;
   transition: var(--transition-base);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.testimonial:hover {
+.component-container:hover {
+  border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.05);
 }
 
-.testimonial-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  margin-bottom: 1.5rem;
-  transition: var(--transition-base);
-}
-
-.testimonial:hover .testimonial-image {
-  transform: scale(1.1);
-}
-
-.quote-icon {
-  font-size: 1.5rem;
-  color: var(--accent);
-  opacity: 0.6;
-  margin-bottom: 1rem;
-}
-
-.testimonial-message {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 0 0 1.5rem 0;
-  color: rgba(255, 255, 255, 0.9);
-  font-style: italic;
-}
-
-.testimonial-name {
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-/* Tooltip Component */
-.tooltips-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.tool-tip {
-  position: relative;
-  background: var(--tooltip-bg-color);
-  border-radius: var(--border-radius);
-  padding: 1.25rem;
-  width: max-content;
-  max-width: 320px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  animation: tooltipEntry 0.3s ease forwards;
-}
-
-.tool-tip-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.inbox {
-  font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.tool-tip-header h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  flex: 1;
-}
-
-.x {
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.6);
-  transition: var(--transition-fast);
-}
-
-.x:hover {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.tooltip-desc {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.tool-tip::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 24px;
-  width: 16px;
-  height: 16px;
-  background: inherit;
-  transform: rotate(45deg);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-@keyframes tooltipEntry {
+@keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -345,21 +130,24 @@ body {
   }
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
-  .banner {
-    margin: 1rem;
+  .app-container {
+    padding: 1rem;
   }
-  
-  .card {
+
+  .gradient-title {
+    font-size: 2.5rem;
+  }
+
+  .header-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .component-container {
     padding: 1.5rem;
-  }
-  
-  .testimonial {
-    padding: 1.5rem;
-  }
-  
-  .tool-tip {
-    max-width: 280px;
   }
 }

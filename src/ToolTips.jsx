@@ -1,24 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInbox, faX } from '@fortawesome/free-solid-svg-icons';
-import './app.css';
+import './styles/Tooltips.css';
 
-function Tooltip({ color }) {
-    const tooltipStyle = {
-        '--tooltip-bg-color': color
-    };
-
+const Tooltip = ({ title, description, variant = 'default', icon = faInbox }) => {
+    const [isVisible, setIsVisible] = useState(true);
+  
     return (
-        <div className="tool-tip" style={tooltipStyle}>
-            <div className="tool-tip-header">
-                <FontAwesomeIcon icon={faInbox} className="inbox" />
-                <h3>Archive Notes</h3>
-                <FontAwesomeIcon icon={faX} className="x" />
-            </div>
-            <p className="tooltip-desc">A tooltip is a small, informative message <br /> that appears when a user hovers over or <br /> clicks on an element.</p>
+      <div className={`tooltip tooltip-${variant} ${isVisible ? 'tooltip-visible' : 'tooltip-hidden'}`}>
+        <div className="tooltip-glass-effect"></div>
+        <div className="tooltip-header">
+          <FontAwesomeIcon icon={icon} className="tooltip-icon" />
+          <h3>{title}</h3>
+          <button className="tooltip-close" onClick={() => setIsVisible(false)}>
+            <FontAwesomeIcon icon={faX} />
+          </button>
         </div>
+        <p className="tooltip-description">{description}</p>
+      </div>
     );
-}
+};
 
 export default Tooltip;
 

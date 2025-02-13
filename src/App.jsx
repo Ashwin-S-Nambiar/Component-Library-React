@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Badge from './Badges';
 import Squares from './Squares';
@@ -6,13 +6,16 @@ import Banner from './Banners';
 import Card from './Card';
 import Tooltip from './ToolTips';
 import Testimonial from './Testimonial';
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
-import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
-import { faCloudArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faInfo, faCheck, faLock, faTriangleExclamation, faCircleXmark, faCircleInfo, faCloudArrowUp } from '@fortawesome/free-solid-svg-icons';
+import main from './image.jpg';
 
 const App = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   const testimonials = [
     {
       name: 'Jane Cody',
@@ -20,111 +23,153 @@ const App = () => {
       image: 'https://via.placeholder.com/80'
     },
   ];
-    
+
   return (
-    <div className="app-container">
-      <div className="grid-overlay"></div>
+    <div className={`app-container ${isVisible ? 'visible' : ''}`}>
+      <div className="grid-background"></div>
       
+      <header className="page-header">
+        <h1 className="gradient-title">Modern Components</h1>
+        <p className="header-subtitle">A collection of beautiful, reusable components</p>
+      </header>
+
       <section className="section badges-section">
-        <h1 className="section-title">Badges</h1>
+        <div className="section-header">
+          <h2 className="section-title">Badges</h2>
+          <div className="section-divider"></div>
+        </div>
         <div className="component-container">
           <div className="badges-grid">
-            <Badge label="Pill" type="secondary" />
-            <Badge label="Pill" type="danger" />
-            <Badge label="Pill" type="warning" />
-            <Badge label="Pill" type="success" />
-            <Badge label="Pill" type="blue" />
-            <Badge label="Pill" type="purple" />
-            <Badge label="Pill" type="pink" />
-            <Badge label="Pill" type="indigo" />
+            <Badge label="Default" type="default" />
+            <Badge label="Success" type="success" />
+            <Badge label="Warning" type="warning" />
+            <Badge label="Danger" type="danger" />
+            <Badge label="Purple" type="purple" />
+            <Badge label="Default" type="blue" />
+            <Badge label="Success" type="pink" />
+            <Badge label="Warning" type="indigo" />
           </div>
           
           <div className="squares-grid">
-            <Squares label="Square" type="secondary" />
-            <Squares label="Square" type="danger" />
-            <Squares label="Square" type="warning" />
+            <Squares label="Default" type="secondary" />
+            <Squares label="Success" type="success" isAnimated={true} />
+            <Squares label="Warning" type="warning" />
             <Squares label="Square" type="success" />
-            <Squares label="Square" type="blue" />
-            <Squares label="Square" type="purple" />
-            <Squares label="Square" type="pink" />
-            <Squares label="Square" type="indigo" />
+            <Squares label="Default" type="secondary" />
+            <Squares label="Purple" type="purple" />
+            <Squares label="Pink" type="pink" />
+            <Squares label="Indigo" type="indigo" />
           </div>
         </div>
       </section>
 
       <section className="section banners-section">
-        <h1 className="section-title">Banners</h1>
+        <div className="section-header">
+          <h2 className="section-title">Banners</h2>
+          <div className="section-divider"></div>
+        </div>
         <div className="component-container">
           <Banner
-            title="Congratulations"
-            subtitle="We provide the best services for you."
-            backgroundColor="rgba(46, 160, 67, 0.1)"
-            textColor="#1a7f37"
-            icon={faCircleCheck}
+            title="Welcome Back!"
+            subtitle="Discover new features and updates"
+            variant="primary"
+            icon={faInfo}
+            isDismissible={true}
           />
           <Banner
             title="Attention"
-            subtitle="We provide the best services for you."
-            backgroundColor="rgba(247, 153, 36, 0.1)"
-            textColor="#9a6700"
+            subtitle="Urgent changes required."
+            variant='warning'
             icon={faTriangleExclamation}
-          />
+            />
           <Banner
-            title="Update Available"
-            subtitle="We provide the best services for you."
-            backgroundColor="rgba(56, 139, 253, 0.1)"
-            textColor="#0969da"
+            title="Update"
+            variant='success'
+            subtitle="New version ready to be downloaded."
             icon={faCircleInfo}
           />
           <Banner
-            title="There is a problem with your application"
-            subtitle="We provide the best services for you."
-            backgroundColor="rgba(248, 81, 73, 0.1)"
-            textColor="#cf222e"
+            title="Error"
+            subtitle="There was an issue with that action."
+            variant='danger'
             icon={faCircleXmark}
           />
         </div>
       </section>
 
       <section className="section cards-section">
-        <h1 className="section-title">Cards</h1>
+        <div className="section-header">
+          <h2 className="section-title">Cards</h2>
+          <div className="section-divider"></div>
+        </div>
         <div className="component-container cards-grid">
           <Card
             title="Deploy Instantly"
             content="Push to git and your site is live. Zero configuration required."
             icon={faCloudArrowUp}
           />
+          <Card
+            title="Security"
+            content="Enterprise-grade security features"
+            icon={faLock}
+            variant="success"
+          />
         </div>
       </section>
 
       <section className="section testimonials-section">
-        <h1 className="section-title">Testimonials</h1>
+        <div className="section-header">
+          <h2 className="section-title">Testimonials</h2>
+          <div className="section-divider"></div>
+        </div>
         <div className="component-container testimonials-grid">
           {testimonials.map((testimonial, index) => (
             <Testimonial
-              key={index}
-              name={testimonial.name}
-              message={testimonial.message}
-              image={testimonial.image}
+              name="John Doe"
+              message="This product has completely transformed our workflow."
+              rating={5}
+              image={main}
             />
           ))}
         </div>
       </section>
 
       <section className="section tooltips-section">
-        <h1 className="section-title">Tooltips</h1>
+        <div className="section-header">
+          <h2 className="section-title">Tooltips</h2>
+          <div className="section-divider"></div>
+        </div>
         <div className="component-container tooltips-grid">
           <div className="tooltip-wrapper">
-            <Tooltip color="#000000" />
+            <Tooltip 
+              title="Archive Notes"
+              description="Click to archive note"
+              variant="primary"
+              icon={faCheck}
+            />
           </div>
           <div className="tooltip-wrapper">
-            <Tooltip color="#0969da" />
+            <Tooltip 
+              title="Add Note"
+              description="Click to add new note"
+              variant="success"
+            />
           </div>
           <div className="tooltip-wrapper">
-            <Tooltip color="#8250df" />
+            <Tooltip 
+              title="Delete Note"
+              description="Delete the note?"
+              variant="danger"
+              icon={faTriangleExclamation}
+            />
           </div>
           <div className="tooltip-wrapper">
-            <Tooltip color="#1a7f37" />
+            <Tooltip 
+              title="Unsaved Note"
+              description="Save the note?"
+              variant="warning"
+              icon={faCircleInfo}
+            />
           </div>
         </div>
       </section>
