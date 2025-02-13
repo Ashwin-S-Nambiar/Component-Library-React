@@ -61,26 +61,26 @@ A sleek and modern component library offering a rich collection of reusable UI e
 
 Contributions are welcome! Here's how you can help improve the Color Scheme Generator:
 
-1. Fork the repository
-2. Create a feature branch:
+1. **Fork the repository**
+2. **Create a feature branch:**
 
    ```bash
    git checkout -b feature/amazing-feature
    ```
 
-3. Commit your changes:
+3. **Commit your changes:**
 
    ```bash
    git commit -m 'Add some amazing feature'
    ```
 
-4. Push to the branch:
+4. **Push to the branch:**
 
    ```bash
    git push origin feature/amazing-feature
    ```
 
-5. Open a Pull Request
+5. **Open a Pull Request.**
 
 ## 📸 Screenshots
 <div align="center">
@@ -107,6 +107,7 @@ Contributions are welcome! Here's how you can help improve the Color Scheme Gene
 <div align="center">
 
 [![Visit](https://img.shields.io/badge/Visit_Site-000?style=for-the-badge&logo=vercel&logoColor=white)](https://component-library-inky.vercel.app/)
+
 </div>
 
 ## 👤 Author
